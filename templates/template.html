@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Lame Blog</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" > 
+</head>
+	<body>
+		<div class="contains">
+			{% for message in get_flashed_messages() %}
+				<div class="alert alert-success" role="alert">{{ message }}</div>
+			{% endfor %}
+			{% if error %}
+				<div class="alert alert-danger" role="alert">{{ error }}</div>
+			{% endif %}
+			{% block content %}
+			{% endblock %}
+		</div>
+	</body>
+</html>
